@@ -13,4 +13,5 @@
     <string name="videos">Videos</string>
     <string name="log_get_popular">"Popular: Number of movies received: "</string>
     <string name="mark_as_favorite">Mark as favorite</string>
+    <string name="movie_favorite">This Movie is Favorite</string>
 </resources>

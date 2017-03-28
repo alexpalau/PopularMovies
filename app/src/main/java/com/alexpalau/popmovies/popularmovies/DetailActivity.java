@@ -105,8 +105,8 @@ public class DetailActivity extends AppCompatActivity implements
 
         mMovieId = Integer.parseInt(mUriMovie.getPathSegments().get(1));
         isFavorite = isFavoriteMovie(mMovieId);
-        if(isFavorite) Toast.makeText(this,"Movie IS favorite",Toast.LENGTH_LONG).show();
-        else Toast.makeText(this,"Movie NOT a favorites",Toast.LENGTH_LONG).show();
+        if(isFavorite) Toast.makeText(this, R.string.movie_favorite,Toast.LENGTH_LONG).show();
+//        else Toast.makeText(this,"Movie NOT a favorites",Toast.LENGTH_LONG).show();
 
         if(mTypeMovie.equals(Utilities.TYPE_POPULAR)) getSupportLoaderManager().initLoader(ID_POPULAR_DETAIL_LOADER,null,this);
         else if(mTypeMovie.equals(Utilities.TYPE_TOP_RATED)) getSupportLoaderManager().initLoader(ID_TOP_RATED_DETAIL_LOADER,null,this);

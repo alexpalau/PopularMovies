@@ -20,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alexpalau.popmovies.popularmovies.adapters.MoviesAdapter;
 import com.alexpalau.popmovies.popularmovies.data.MoviesContract;
@@ -259,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements
         if (requestCode == 1){
             if (resultCode == Activity.RESULT_OK){
                 mSortBy=data.getStringExtra("SortBy");
-                Toast.makeText(this,"Return for DetailActivity sort by: "+ mSortBy,Toast.LENGTH_LONG).show();
+//                Toast.makeText(this,"Return for DetailActivity sort by: "+ mSortBy,Toast.LENGTH_LONG).show();
             }
         }
     }
