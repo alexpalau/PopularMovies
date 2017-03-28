@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements
 
         int mNoOfColumns = Utilities.calculateColumns(getApplicationContext());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,mNoOfColumns);
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
 
@@ -92,47 +91,20 @@ public class MainActivity extends AppCompatActivity implements
             if (mSortBy==null || mSortBy.equals(ACTION_SORT_POPULAR)) {
                 if (Utilities.isOnline(getApplicationContext())) getPopularMoviesApi();
                 mSortBy=ACTION_SORT_POPULAR;
-//                getPopularMoviesDB();
                 getSupportLoaderManager().initLoader(ID_POPULAR_LOADER,null,this);
             }
             else if (mSortBy.equals(ACTION_SORT_TOP_RATED)) {
                 if (Utilities.isOnline(getApplicationContext())) getTopRatedMoviesApi();
-//                getTopRatedMoviesDB();
                 getSupportLoaderManager().initLoader(ID_TOP_RATED_LOADER,null,this);
             }
             else if (mSortBy.equals(ACTION_SORT_FAVORITES)) {
                 getSupportLoaderManager().initLoader(ID_FAVORITES_LOADER,null,this);
             }
-        //mRecyclerView.smoothScrollToPosition(mPosition);
+
         showMovies();
-//            else if (mSortBy.equals(ACTION_SORT_FAVORITES)) getFavoriteMovies();
-            //mLoadingIndicator.setVisibility(View.INVISIBLE);
         }
-        //showErrorMessage();
 
 
-
-//    private void getPopularMoviesDB() {
-//        ContentResolver moviesContentResolver =getApplicationContext().getContentResolver();
-//        Cursor data= moviesContentResolver.query(
-//                    MoviesContract.PopularEntry.CONTENT_URI,
-//                    Utilities.POPULAR_PROJECTION,
-//                    null,
-//                    null,
-//                    MoviesContract.PopularEntry.COLUMN_POPULARITY + " DESC");
-//        mMoviesAdapter.swapCursor(data);
-//    }
-
-//    private void getTopRatedMoviesDB() {
-//        ContentResolver moviesContentResolver = getApplicationContext().getContentResolver();
-//        Cursor data= moviesContentResolver.query(
-//                MoviesContract.TopRatedEntry.CONTENT_URI,
-//                Utilities.TOP_RATED_PROJECTION,
-//                null,
-//                null,
-//                MoviesContract.TopRatedEntry.COLUMN_RATING + " DESC");
-//        mMoviesAdapter.swapCursor(data);
-//    }
 
 
 
@@ -144,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
                 List<Movie> movies = response.body().getResults();
                 Log.d(TAG,getString(R.string.log_get_popular)+ movies.size());
-                //mMoviesAdapter.setMoviesData(movies);
                 if(movies != null && movies.size()!=0){
 
                     ContentValues[] popularValues = Utilities.getContentValuesFromMovies(movies,Utilities.TYPE_POPULAR);
@@ -168,7 +139,6 @@ public class MainActivity extends AppCompatActivity implements
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
                 List<Movie> movies = response.body().getResults();
                 Log.d(TAG,"Top Rated: Number of movies received: "+ movies.size());
-                //mMoviesAdapter.setMoviesData(movies);
                 if(movies != null && movies.size()!=0){
 
                     ContentValues[] popularValues = Utilities.getContentValuesFromMovies(movies,Utilities.TYPE_TOP_RATED);
@@ -188,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements
 
     private void showMovies() {
         mErrorMessageDisplay.setVisibility(View.INVISIBLE);
-//        mLoadingIndicator.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 
@@ -248,7 +217,6 @@ public class MainActivity extends AppCompatActivity implements
                 break;
         }
         movieDetailIntent.setData(uriForMovieClicked);
-//        startActivity(movieDetailIntent);
         startActivityForResult(movieDetailIntent, 1);
     }
 
@@ -322,7 +290,6 @@ public class MainActivity extends AppCompatActivity implements
         if (mPosition == RecyclerView.NO_POSITION) mPosition = 0;
         mRecyclerView.smoothScrollToPosition(mPosition);
         if (data.getCount() != 0) showMovies();
-//        loadMoviesData();
     }
 
     @Override

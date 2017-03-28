@@ -18,7 +18,6 @@ import com.alexpalau.popmovies.popularmovies.utilities.Utilities;
 
 public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosAdapterViewHolder>{
 
-//    private List<Video> videoList;
     Cursor mCursorVideo;
     Context context;
 
@@ -48,10 +47,8 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosAdap
 
     @Override
     public void onBindViewHolder(VideosAdapterViewHolder holder, int position) {
-        //Video video = videoList.get(position);
         mCursorVideo.moveToPosition(position);
         holder.mName.setText(mCursorVideo.getString(Utilities.INDEX_VIDEO_NAME));
-        //holder.mVideo.setImageDrawable(R.drawable.ic_play_arrow_black_24px);
     }
 
     @Override
@@ -64,12 +61,6 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosAdap
         mCursorVideo = newCursor;
         notifyDataSetChanged();
     }
-
-//    public void setVideosData(List<Video> videosData) {
-//        if (videoList!=null) videoList.clear();
-//        videoList = videosData;
-//        notifyDataSetChanged();
-//    }
 
     public class VideosAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public final TextView mName;
@@ -86,7 +77,6 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosAdap
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             mCursorVideo.moveToPosition(adapterPosition);
-            //Video video = videoList.get(adapterPosition);
             mClickHandler.onClick(mCursorVideo.getString(Utilities.INDEX_VIDEO_KEY));
         }
     }

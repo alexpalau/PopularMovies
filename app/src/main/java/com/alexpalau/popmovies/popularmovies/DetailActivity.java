@@ -40,7 +40,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity implements
-        ReviewsAdapter.ReviewsAdapterOnClickHandler,
+//        ReviewsAdapter.ReviewsAdapterOnClickHandler,
         VideosAdapter.VideosAdapterOnClickHandler,
         LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -96,7 +96,8 @@ public class DetailActivity extends AppCompatActivity implements
         mReviewsRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_reviews);
         mReviewsRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         mReviewsRecyclerView.setHasFixedSize(true);
-        mReviewsAdapter = new ReviewsAdapter(this.getApplicationContext(),this);
+//        mReviewsAdapter = new ReviewsAdapter(this.getApplicationContext(),this);
+        mReviewsAdapter = new ReviewsAdapter(this.getApplicationContext());
         mReviewsRecyclerView.setAdapter(mReviewsAdapter);
 
 
@@ -105,7 +106,7 @@ public class DetailActivity extends AppCompatActivity implements
 
         mMovieId = Integer.parseInt(mUriMovie.getPathSegments().get(1));
         isFavorite = isFavoriteMovie(mMovieId);
-        if(isFavorite) Toast.makeText(this, R.string.movie_favorite,Toast.LENGTH_LONG).show();
+//        if(isFavorite) Toast.makeText(this, R.string.movie_favorite,Toast.LENGTH_LONG).show();
 //        else Toast.makeText(this,"Movie NOT a favorites",Toast.LENGTH_LONG).show();
 
         if(mTypeMovie.equals(Utilities.TYPE_POPULAR)) getSupportLoaderManager().initLoader(ID_POPULAR_DETAIL_LOADER,null,this);
@@ -113,33 +114,11 @@ public class DetailActivity extends AppCompatActivity implements
         else getSupportLoaderManager().initLoader(ID_FAVORITE_DETAIL_LOADER,null,this);
 
 
-        //getSupportLoaderManager().initLoader(ID_VIDEOS_LOADER,null,this);
-
-//        Intent intent = getIntent();
-//        if(intent!=null){
-//            Movie movie = intent.getParcelableExtra(Intent.EXTRA_TEXT);
-//
-//            mTitle.setText(movie.getOriginalTitle());
-//            mRealeaseDate.setText( movie.getReleaseDate());
-//            String posterPath= Utilities.buildImageUrl(movie.getPosterPath());
-//            Picasso.with(this.getApplicationContext()).load(posterPath).into(mPoster);
-//            mReview.setText(movie.getOverview());
-//            mUserRating.setText(String.valueOf(movie.getVoteAverage()));
-//            loadMovieReviews(movie.getId());
-//            loadMovieVideos(movie.getId());
-//        }
-
 
 
 
     }
 
-//    private boolean isFavoriteMovie(int mMovieId) {
-//        ContentResolver favoritesContentResolver = getContentResolver();
-//        Uri favoriteUriId = MoviesContract.FavoriteEntry.buildFavoriteUriId(mMovieId);
-//        Cursor data =favoritesContentResolver.query(favoriteUriId,Utilities.FAVORITES_PROJECTION,null,null,null);
-//        return data.moveToFirst();
-//    }
     private boolean isFavoriteMovie(int mMovieId) {
         getSupportLoaderManager().initLoader(ID_CHECK_FAVORITE_LOADER,null,this);
 
@@ -156,8 +135,7 @@ public class DetailActivity extends AppCompatActivity implements
             @Override
             public void onResponse(Call<VideosResponse> call, Response<VideosResponse> response) {
                 List<Video> videos = response.body().getResults();
-                Log.d(TAG,"Videos: Number of videos received: "+ videos.size());
-               // mVideosAdapter.setVideosData(videos);
+                Log.d(TAG,"Reviews: Number of reviews received: "+ videos.size());
                 if(videos != null && videos.size()!=0){
 
                     ContentValues[] videosValues = Utilities.getContentValuesFromVideos(videos,mMovieId);
@@ -180,8 +158,7 @@ public class DetailActivity extends AppCompatActivity implements
             @Override
             public void onResponse(Call<ReviewsResponse> call, Response<ReviewsResponse> response) {
                 List<Review> reviews = response.body().getResults();
-                Log.d(TAG,"Reviews: Number of reviews received: "+ reviews.size());
-                //mReviewsAdapter.setReviewsData(reviews);
+                Log.d(TAG,"Videos: Number of videos received: "+ reviews.size());
                 if(reviews != null && reviews.size()!=0){
 
                     ContentValues[] reviewValues = Utilities.getContentValuesFromReviews(reviews,mMovieId);
@@ -197,14 +174,8 @@ public class DetailActivity extends AppCompatActivity implements
         });
     }
 
-//    @Override
-//    public void onClick(String urlReview) {
-//        Utilities.openLink(urlReview,this);
-//    }
-
     @Override
     public void onClick(String videoKey) {
-//        String url = Utilities.YOUTUBE_URL + videoUrl.getKey();
         String url = Utilities.YOUTUBE_URL + videoKey;
         Log.d(TAG,"Video URL: "+ url);
         Utilities.openLink(url,this);

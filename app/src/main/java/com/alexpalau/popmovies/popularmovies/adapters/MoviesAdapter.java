@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdapterViewHolder>{
 
-//    private List<Movie> movieList;
     private Cursor mCursor;
     Context context;
 
@@ -43,7 +42,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdap
 
     @Override
     public void onBindViewHolder(MoviesAdapterViewHolder holder, int position) {
-//            Movie movie = movieList.get(position);
         mCursor.moveToPosition(position);
         String poster = mCursor.getString(Utilities.INDEX_IMAGE);
         String posterPath= Utilities.buildImageUrl(poster);
@@ -75,7 +73,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdap
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             mCursor.moveToPosition(adapterPosition);
-            //Movie movie = movieList.get(adapterPosition);
             int idMovie = mCursor.getInt(Utilities.INDEX_MOVIE_ID);
             mClickHandler.onClick(idMovie);
         }

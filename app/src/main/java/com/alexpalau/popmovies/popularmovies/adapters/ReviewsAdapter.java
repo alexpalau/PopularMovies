@@ -17,20 +17,22 @@ import com.alexpalau.popmovies.popularmovies.utilities.Utilities;
 
 public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewsAdapterViewHolder>{
 
-//    private List<Review> reviewList;
     private Cursor mCursorReview;
     Context context;
 
-    private final ReviewsAdapterOnClickHandler mClickHandler;
+//    private final ReviewsAdapterOnClickHandler mClickHandler;
 
-    public interface ReviewsAdapterOnClickHandler{
-        void onClick(String urlReview);
-    }
+//    public interface ReviewsAdapterOnClickHandler{
+//        void onClick(String urlReview);
+//    }
 
 
-    public ReviewsAdapter(Context context, ReviewsAdapterOnClickHandler clickHandler){
+//    public ReviewsAdapter(Context context, ReviewsAdapterOnClickHandler clickHandler){
+//        this.context = context;
+//        mClickHandler = clickHandler;
+//    }
+    public ReviewsAdapter(Context context){
         this.context = context;
-        mClickHandler = clickHandler;
     }
 
 
@@ -58,11 +60,6 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewsA
         return mCursorReview.getCount();
     }
 
-//    public void setReviewsData(List<Review> reviewsData) {
-//        if (reviewList!=null) reviewList.clear();
-//        reviewList = reviewsData;
-//        notifyDataSetChanged();
-//    }
 
     public void swapCursor(Cursor newCursor) {
         mCursorReview = newCursor;
@@ -84,8 +81,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewsA
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             mCursorReview.moveToPosition(adapterPosition);
-//            Review review = reviewList.get(adapterPosition);
-            mClickHandler.onClick(mCursorReview.getString(Utilities.INDEX_REVIEW_URL));
+//            mClickHandler.onClick(mCursorReview.getString(Utilities.INDEX_REVIEW_URL));
         }
     }
 

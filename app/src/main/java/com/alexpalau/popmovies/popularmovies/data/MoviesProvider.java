@@ -18,20 +18,14 @@ public class MoviesProvider extends ContentProvider {
     /* POPULAR */
     public static final int CODE_POPULAR = 100;
     public static final int CODE_POPULAR_WITH_ID = 101;
-//    public static final int CODE_POPULAR_WITH_ID_REVIEWS = 102;
-//    public static final int CODE_POPULAR_WITH_ID_VIDEOS = 103;
 
     /* TOP_RATED */
     public static final int CODE_TOP_RATED = 200;
     public static final int CODE_TOP_RATED_WITH_ID = 201;
-//    public static final int CODE_TOP_RATED_WITH_ID_REVIEWS = 202;
-//    public static final int CODE_TOP_RATED_WITH_ID_VIDEOS = 203;
 
     /* FAVORITES */
     public static final int CODE_FAVORITES = 300;
     public static final int CODE_FAVORITES_WITH_ID = 301;
-//    public static final int CODE_FAVORITES_WITH_ID_REVIEWS = 302;
-//    public static final int CODE_FAVORITES_WITH_ID_VIDEOS = 303;
 
     /* REVIEWS */
     public static final int CODE_REVIEWS = 400;
@@ -55,18 +49,12 @@ public class MoviesProvider extends ContentProvider {
         matcher.addURI(authority, MoviesContract.PATH_POPULAR, CODE_POPULAR);
         /* This URI would look something like content://com.alexpalau.popmovies.popularmovies/popular/1472214172 */
         matcher.addURI(authority, MoviesContract.PATH_POPULAR + "/#", CODE_POPULAR_WITH_ID);
-//        matcher.addURI(authority, MoviesContract.PATH_POPULAR + "/#/"+ MoviesContract.PATH_REVIEWS, CODE_POPULAR_WITH_ID_REVIEWS);
-//        matcher.addURI(authority, MoviesContract.PATH_POPULAR + "/#/"+ MoviesContract.PATH_VIDEOS, CODE_POPULAR_WITH_ID_VIDEOS);
 
         matcher.addURI(authority, MoviesContract.PATH_TOP_RATED, CODE_TOP_RATED);
         matcher.addURI(authority, MoviesContract.PATH_TOP_RATED + "/#", CODE_TOP_RATED_WITH_ID);
-//        matcher.addURI(authority, MoviesContract.PATH_TOP_RATED + "/#/"+ MoviesContract.PATH_REVIEWS, CODE_TOP_RATED_WITH_ID_REVIEWS);
-//        matcher.addURI(authority, MoviesContract.PATH_TOP_RATED + "/#/"+ MoviesContract.PATH_VIDEOS, CODE_TOP_RATED_WITH_ID_VIDEOS);
 
         matcher.addURI(authority, MoviesContract.PATH_FAVORITES, CODE_FAVORITES);
         matcher.addURI(authority, MoviesContract.PATH_FAVORITES + "/#", CODE_FAVORITES_WITH_ID);
-//        matcher.addURI(authority, MoviesContract.PATH_FAVORITES + "/#/"+ MoviesContract.PATH_REVIEWS, CODE_FAVORITES_WITH_ID_REVIEWS);
-//        matcher.addURI(authority, MoviesContract.PATH_FAVORITES + "/#/"+ MoviesContract.PATH_VIDEOS, CODE_FAVORITES_WITH_ID_VIDEOS);
 
         matcher.addURI(authority, MoviesContract.PATH_REVIEWS, CODE_REVIEWS);
         matcher.addURI(authority, MoviesContract.PATH_REVIEWS + "/#", CODE_REVIEWS_WITH_ID);
