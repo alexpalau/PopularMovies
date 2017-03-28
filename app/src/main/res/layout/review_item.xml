@@ -12,15 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/view_padding"
-        android:textSize="@dimen/text_medium_size"
-        android:textStyle="bold"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
     <TextView
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/view_padding_small"
-        android:textSize="@dimen/text_medium_size"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <!--<ImageView-->
         <!--android:id="@+id/divider2"-->

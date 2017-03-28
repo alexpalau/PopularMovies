@@ -10,7 +10,7 @@
     <string name="release_date">Released</string>
     <string name="content_authority">com.alexpalau.popmovies.popularmovies</string>
     <string name="user_reviews">User Reviews</string>
-    <string name="videos">Videos (scroll down)</string>
+    <string name="videos">Videos</string>
     <string name="log_get_popular">"Popular: Number of movies received: "</string>
     <string name="mark_as_favorite">Mark as favorite</string>
 </resources>
