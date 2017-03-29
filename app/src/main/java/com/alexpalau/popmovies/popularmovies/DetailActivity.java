@@ -100,9 +100,16 @@ public class DetailActivity extends AppCompatActivity implements
         mReviewsAdapter = new ReviewsAdapter(this.getApplicationContext());
         mReviewsRecyclerView.setAdapter(mReviewsAdapter);
 
-
+        Intent intentExtras = getIntent();
         mUriMovie = getIntent().getData();
-        mTypeMovie= getIntent().getStringExtra(Utilities.SORT_ACTION);
+
+        Bundle extras = intentExtras.getExtras();
+        if(extras!=null){
+            if (extras.containsKey(Utilities.SORT_ACTION)){
+                mTypeMovie= extras.getString(Utilities.SORT_ACTION);
+            }
+        }
+
 
         mMovieId = Integer.parseInt(mUriMovie.getPathSegments().get(1));
         isFavorite = isFavoriteMovie(mMovieId);
@@ -329,18 +336,6 @@ public class DetailActivity extends AppCompatActivity implements
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-//        switch (loader.getId()){
-//            case ID_POPULAR_DETAIL_LOADER:
-//            case ID_TOP_RATED_DETAIL_LOADER:
-//            case ID_FAVORITE_DETAIL_LOADER:
-//                 mCursorMovie=null;
-//            case ID_CHECK_FAVORITE_LOADER:
-//                isFavorite=false;
-//            case ID_REVIEWS_LOADER:
-//                mReviewsAdapter.swapCursor(null);
-//            case ID_VIDEOS_LOADER:
-//                mVideosAdapter.swapCursor(null);
-//        }
         mCursorMovie=null;
         isFavorite=false;
         mReviewsAdapter.swapCursor(null);
@@ -348,17 +343,6 @@ public class DetailActivity extends AppCompatActivity implements
     }
 
     public void favoriteYesNo(View view) {
-        //mFavorite.setFocusable(true);
-        //mFavorite.setPressed(true);
-//        mFavorite.setFocusable(true);
-//        mFavorite.setFocusableInTouchMode(true);
-        //mFavorite.setHovered(true);
-//        mFavorite.setActivated(true);
-//        mFavorite.setSelected(true);
-        //view.setSelected(!view.isSelected());
-        //mFavorite.getBackground().setState(new int[]{android.R.attr.state_checked});
-    //view.setBackgroundResource(android.R.drawable.btn_star_big_on);
-
         ContentResolver favoritesContentResolver = getContentResolver();
         //insert into favorite table
         if(!isFavorite){

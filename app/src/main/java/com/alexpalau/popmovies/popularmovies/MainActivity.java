@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements
 
         mMoviesAdapter.swapCursor(data);
         if (mPosition == RecyclerView.NO_POSITION) mPosition = 0;
-        mRecyclerView.smoothScrollToPosition(mPosition);
+        //mRecyclerView.smoothScrollToPosition(mPosition);
         if (data.getCount() != 0) showMovies();
     }
 
